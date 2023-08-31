@@ -1,0 +1,116 @@
+.filter {
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+.toogleBtn {
+    font-weight: 400;
+    border-bottom: 1px solid var(--white);
+}
+.isActive {
+    font-weight: 700;
+}
+
+.btn {
+    padding: 2px 11px;
+    border-radius: 16px;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    height: 24px;
+    width: 90px;
+    grid-area: btn;
+    margin: auto;
+}
+
+.btnInactive {
+    padding: 2px 11px;
+    border-radius: 16px;
+    background: rgba(248, 102, 0, 0.15);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    height: 24px;
+    width: 96px;
+    grid-area: btn;
+    margin: auto;
+}
+
+.btnHidden {
+    display: none;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: auto minmax(24px, 40px) auto;
+    grid-template-rows:  1fr 1fr 1fr 1fr;
+    gap: 8px;
+
+    justify-content: left;
+    grid-template-areas:
+            " title title title"
+            " size icon name "
+            " btn danger danger "
+            "detail detail detail";
+    margin-bottom: 24px;
+}
+
+.descriptionDetail {
+    display: grid;
+    grid-template-columns: auto minmax(24px, 40px) auto;
+    grid-template-rows:  1fr 1fr 1fr;
+    gap: 8px;
+
+    justify-content: left;
+    grid-template-areas:
+            " title title title"
+            " size icon name "
+            " danger danger danger "
+            "detail detail detail";
+    margin-bottom: 24px;
+}
+
+.title {
+    grid-area: title;
+
+}
+
+.size {
+    grid-area: size;
+    justify-items: center;
+}
+
+.icon {
+    grid-area: icon;
+    margin: auto;
+}
+
+.name {
+    grid-area: name;
+    justify-items: center;
+}
+
+.danger {
+    grid-area: danger;
+    color: var(--white);
+    margin: auto 10px;
+}
+
+.detail {
+    padding: 2px 11px;
+    border-radius: 16px;
+    background: var(--gray-dark);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    min-width: 100%;
+    max-width: 100%;
+    grid-area: detail;
+    margin: auto;
+    text-align: center;
+}
