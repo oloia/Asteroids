@@ -1,3 +1,4 @@
+'use client'
 import styles from '@/components/ShoppingCart/ShoppingCart.module.css';
 import {  Htag } from '@/components';
 import { ShoppingCartProps } from '@/components/ShoppingCart/ShoppingCart.props';

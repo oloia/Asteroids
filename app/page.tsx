@@ -16,7 +16,7 @@ const Page = async() => {
   return (
     <div className={styles.title}>
       <Htag tag="h2">Ближайшие подлёты астероидов</Htag>
-      <Card hasBtn mainTitle={'31 авг 2023'} description={page.near_earth_objects["2023-08-31"]} />
+      <Card hasBtn mainTitle={'31 авг 2023'} description={page.near_earth_objects["2023-08-31"]} addProduct={} />
       {/*{page.near_earth_objects["2023-09-06"].map(p => (*/}
       {/*  <Card mainTitle={'6 сент 2023'} description={p} key={p.id}/>*/}
       {/*))}*/}

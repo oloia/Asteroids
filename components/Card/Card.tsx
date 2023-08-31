@@ -1,32 +1,21 @@
 'use client';
 import { CardProps } from '@/components/Card/Card.props';
 import styles from '@/components/Card/Card.module.css';
-import { Htag } from '@/components';
+import { Htag, ShoppingCart } from '@/components';
 import BigAsteroidIcon from './bigAsteroid.svg';
 import SmallAsteroidIcon from './smallAsteroid.svg';
 import ArrowIcon from './arrow.svg';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import { IAsteroid } from '@/interfaces/asteroid.interface';
+import { CartContext } from '@/providers/CartProvider';
 
-const Card = ({ description, mainTitle, className, hasBtn, ...props }: CardProps) => {
+const Card = ({ addProduct, description, mainTitle, className, hasBtn, ...props }: CardProps) => {
   const [isToggled, setIsToggled] = useState<string>('option1');
-  const [products, setProducts] = useState<IAsteroid[]>([]);
-  const [isOff, setIsOff] = useState<boolean>(false)
+  const { state, dispatch } = useContext(CartContext);
 
   const handleToggle = (option) => {
     setIsToggled(option);
-  };
-
-
-
-  const addProduct = (newItem: IAsteroid) => {
-    // Проверяем, есть ли уже такой объект в массиве
-    if (!products.some(product => product.id === newItem.id)) {
-      console.log(products)
-      setProducts([...products, newItem]);
-    }
-    // setIsOff(true);
   };
 
   return (
@@ -60,7 +49,7 @@ const Card = ({ description, mainTitle, className, hasBtn, ...props }: CardProps
               <Htag tag="h4"><span style={{ borderBottom: '1px solid white' }}>{item.name}</span></Htag>
               <div> Ø {Math.floor(item.estimated_diameter.meters.estimated_diameter_max)} м</div>
             </div>
-            {hasBtn && <button className={isOff ? styles.btnInactive : styles.btn} onClick={()=>addProduct(item)}>ЗАКАЗАТЬ</button>}
+            {hasBtn && <button className={styles.btn} onClick={() => dispatch({ type: "ADD_ITEM" })}>ЗАКАЗАТЬ</button>}
             {item.is_potentially_hazardous_asteroid && <div className={styles.danger}>⚠ Опасен</div>}
             {hasBtn && <Link href={`/${item.id}`} className={styles.detail}>Об астероиде</Link>}
           </div>

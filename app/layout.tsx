@@ -6,6 +6,7 @@ import styles from '@/app/layout.module.css';
 import { ShoppingCart, Sidebar } from '@/components';
 import Image from 'next/image';
 import PlanetaImg from '@/components/Sidebar/planeta_zemlia_kosmos.png';
+import CartProvider from '@/providers/CartProvider';
 
 const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '700'] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({ children, }: { children: ReactNode }) {
         {children}
       </div>
       <div className={styles.shoppingСart}>
-        <ShoppingCart  />
+        <CartProvider>
+          <ShoppingCart  />
+        </CartProvider>
       </div>
     </div>
     </body>
