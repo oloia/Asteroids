@@ -18,7 +18,7 @@ const Card = ({ addProduct, description, mainTitle, className, hasBtn, ...props 
     dispatch({ type: 'ADD_ITEM', item });
   };
 
-  const handleToggle = (option) => {
+  const handleToggle = (option: string) => {
     setIsToggled(option);
   };
 

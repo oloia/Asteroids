@@ -5,5 +5,5 @@ export interface CardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
   mainTitle: string;
   description: IAsteroid[];
   hasBtn?: boolean;
-  addProduct?: (IAsteroid) => void;
+  addProduct?: () => void;
 }
