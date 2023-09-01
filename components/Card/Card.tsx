@@ -12,10 +12,13 @@ import { useCart } from '@/providers/CartProvider';
 
 const Card = ({ addProduct, description, mainTitle, className, hasBtn, ...props }: CardProps) => {
   const [isToggled, setIsToggled] = useState<string>('option1');
-  const { state, alreadyInCart, dispatch } = useCart();
+  const { alreadyInCart, dispatch } = useCart();
 
   const onClickOrder = (item: IAsteroid) => () => {
-    dispatch({ type: 'ADD_ITEM', item });
+    if(!alreadyInCart(item.id)){
+      dispatch({ type: 'ADD_ITEM', item });
+        window.location.reload();
+    }
   };
 
   const handleToggle = (option: string) => {
