@@ -53,7 +53,7 @@ const CartProvider = ({ children }: {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const alreadyInCart = useCallback((id: string) => {
-    return state.some((item) =>  item.id == id)
+    return (state as CartItem[]).some((item) =>  item.id == id)
   }, [state]);
 
   useEffect(() => {

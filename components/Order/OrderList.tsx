@@ -4,16 +4,12 @@ import { Card } from '@/components';
 import React from 'react';
 import { useCart } from '@/providers/CartProvider';
 
-interface OrderListProps {
-  title: string;
-}
-
-const OrderList = async ({title}: OrderListProps) => {
+const OrderList = async () => {
   const {state} = useCart();
 
   return (
     <Card
-      mainTitle={title}
+      mainTitle={'31 авг 2023'}
       description={state}
     />
   );

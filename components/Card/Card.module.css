@@ -82,6 +82,7 @@
 .size {
     grid-area: size;
     justify-items: center;
+    color: var(--white)
 }
 
 .icon {
