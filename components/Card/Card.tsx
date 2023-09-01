@@ -8,11 +8,15 @@ import ArrowIcon from './arrow.svg';
 import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import { IAsteroid } from '@/interfaces/asteroid.interface';
-import { CartContext } from '@/providers/CartProvider';
+import { CartContext, useCart } from '@/providers/CartProvider';
 
 const Card = ({ addProduct, description, mainTitle, className, hasBtn, ...props }: CardProps) => {
   const [isToggled, setIsToggled] = useState<string>('option1');
-  const { state, dispatch } = useContext(CartContext);
+  const {alreadyInCart, dispatch} = useCart();
+
+  const onClickOrder = (item: IAsteroid) => () => {
+    dispatch({type: 'ADD_ITEM', item})
+  }
 
   const handleToggle = (option) => {
     setIsToggled(option);
@@ -49,7 +53,13 @@ const Card = ({ addProduct, description, mainTitle, className, hasBtn, ...props 
               <Htag tag="h4"><span style={{ borderBottom: '1px solid white' }}>{item.name}</span></Htag>
               <div> Ø {Math.floor(item.estimated_diameter.meters.estimated_diameter_max)} м</div>
             </div>
-            {hasBtn && <button className={styles.btn} onClick={() => dispatch({ type: "ADD_ITEM" })}>ЗАКАЗАТЬ</button>}
+            {hasBtn && <button
+              className={`${styles.btn} ${alreadyInCart(item.id) && styles.btnInactive}`}
+              onClick={onClickOrder(item)}
+              disabled={alreadyInCart(item.id)}
+            >
+              ЗАКАЗАТЬ</button>
+            }
             {item.is_potentially_hazardous_asteroid && <div className={styles.danger}>⚠ Опасен</div>}
             {hasBtn && <Link href={`/${item.id}`} className={styles.detail}>Об астероиде</Link>}
           </div>

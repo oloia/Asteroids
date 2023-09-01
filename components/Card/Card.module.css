@@ -37,6 +37,7 @@
     width: 96px;
     grid-area: btn;
     margin: auto;
+    color: var(--orange);
 }
 
 .btnHidden {

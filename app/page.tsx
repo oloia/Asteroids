@@ -16,26 +16,13 @@ const Page = async() => {
   return (
     <div className={styles.title}>
       <Htag tag="h2">Ближайшие подлёты астероидов</Htag>
-      <Card hasBtn mainTitle={'31 авг 2023'} description={page.near_earth_objects["2023-08-31"]} addProduct={} />
-      {/*{page.near_earth_objects["2023-09-06"].map(p => (*/}
-      {/*  <Card mainTitle={'6 сент 2023'} description={p} key={p.id}/>*/}
-      {/*))}*/}
-      {/*{page.near_earth_objects["2023-09-07"].map(p => (*/}
-      {/*  <Card mainTitle={'7 сент 2023'} description={p} key={p.id}/>*/}
-      {/*))}*/}
-      {/*{page.near_earth_objects["2023-09-05"].map(p => (*/}
-      {/*  <Card mainTitle={'5 сент 2023'} description={p} key={p.id}/>*/}
-      {/*))}*/}
-      {/*{page.near_earth_objects["2023-09-02"].map(p => (*/}
-      {/*  <Card mainTitle={'2 сент 2023'} description={p} key={p.id}/>*/}
-      {/*))}*/}
-      {/*{page.near_earth_objects["2023-09-03"].map(p => (*/}
-      {/*  <Card mainTitle={'3 сент 2023'} description={p} key={p.id}/>*/}
-      {/*))}*/}
-      {/*{page.near_earth_objects["2023-09-01"].map(p => (*/}
-      {/*  <Card mainTitle={'1 сент 2023'} description={p} key={p.id}/>*/}
-      {/*))}*/}
-
+      <Card hasBtn mainTitle={'31 авг 2023'} description={page.near_earth_objects["2023-08-31"]} />
+      <Card hasBtn mainTitle={'1 сент 2023'} description={page.near_earth_objects["2023-09-01"]} />
+      <Card hasBtn mainTitle={'2 сент 2023'} description={page.near_earth_objects["2023-09-02"]} />
+      <Card hasBtn mainTitle={'4 сент 2023'} description={page.near_earth_objects["2023-09-04"]} />
+      <Card hasBtn mainTitle={'5 сент 2023'} description={page.near_earth_objects["2023-09-05"]} />
+      <Card hasBtn mainTitle={'6 сент 2023'} description={page.near_earth_objects["2023-09-06"]} />
+      <Card hasBtn mainTitle={'7 сент 2023'} description={page.near_earth_objects["2023-09-07"]} />
     </div>
   );
 };

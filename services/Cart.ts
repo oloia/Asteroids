@@ -1,8 +1,6 @@
-export interface CartItem {
-  name: string;
-  size: string;
-  id: string;
-}
+import { IAsteroid } from '@/interfaces/asteroid.interface';
+
+export type CartItem = IAsteroid;
 
 class Cart {
   constructor(private readonly key: string) {
@@ -16,11 +14,6 @@ class Cart {
 
   getAllItems = (): CartItem[] => {
     return JSON.parse(localStorage.getItem(this.key) || '[]');
-  };
-
-  hasItem = (id: string): boolean => {
-    const items = this.getAllItems();
-    return items.some((item) => item.id === id);
   };
 }
 

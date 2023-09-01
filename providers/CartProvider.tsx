@@ -1,24 +1,33 @@
 'use client';
-import { createContext, Dispatch, ReactNode, useReducer } from 'react';
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer
+} from 'react';
 import { CartItem } from '@/services/Cart';
+import { cart } from '@/services';
 
 type StateType = CartItem[];
 
-type ActionType = {
-  type: string;
-  item: CartItem;
-};
+type ActionType =
+  { type: string; } |
+  { type: string; item: CartItem; }
 
 const initialState: StateType = [];
 
 const reducer = (state: StateType, action: ActionType) => {
   switch (action.type) {
+    case 'INIT':
+      return cart.getAllItems();
     case 'ADD_ITEM':
-      return { ...state, count: state.item + 1 };
-    case 'DECREMENT':
-      return { ...state, count: state.count - 1 };
-    case 'RESET':
-      return { ...state, count: 0 };
+      // @ts-ignore
+      cart.addItem(action.item);
+      // @ts-ignore
+      return [ ...state, action.item ];
     default:
       return state;
   }
@@ -27,15 +36,32 @@ const reducer = (state: StateType, action: ActionType) => {
 export const CartContext = createContext<{
   state: StateType;
   dispatch: Dispatch<ActionType>;
-}>({ state: initialState, dispatch: () => null });
+  alreadyInCart: (id: string) => boolean;
+}>({
+  state: initialState,
+  dispatch: () => null,
+  alreadyInCart: () => false
+});
+
+export const useCart = () => {
+  return useContext(CartContext);
+}
 
 const CartProvider = ({ children }: {
   children: ReactNode;
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const alreadyInCart = useCallback((id: string) => {
+    return state.some((item) =>  item.id == id)
+  }, [state]);
+
+  useEffect(() => {
+    dispatch({type: 'INIT'})
+  }, [])
+
   return (
-    <CartContext.Provider value={{ state, dispatch }}>
+    <CartContext.Provider value={{ state, dispatch, alreadyInCart }}>
       {children}
     </CartContext.Provider>
   );
