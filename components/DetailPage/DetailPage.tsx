@@ -12,7 +12,7 @@ const DetailPage = ({description, ...props}: DetailPageProps) => {
         <div className={styles.velocityItem}>{description && description?.close_approach_data[0]?.relative_velocity?.kilometers_per_hour} км/ч </div>
       </div>
       <div className={styles.epochDate} {...props} >
-        <Htag tag="h3">Время максимального сближения</Htag>
+        <Htag tag="h3">Время сближения</Htag>
         <div className={styles.velocityItem}>{description && new Date(description.close_approach_data[0].epoch_date_close_approach).toDateString()}</div>
       </div>
       <div className={styles.distance} {...props} >
