@@ -1,9 +1,13 @@
 import { DetailPage } from '@/components';
 import { getDetailPage } from '@/api/detailPage';
-import { ParsedUrlQuery } from 'querystring';
-import { GetStaticPropsContext } from 'next';
 
-const Page = async ({params}: any) => {
+interface IPageProps {
+  params: {
+    alias: string;
+  };
+}
+
+const Page = async ({params}: IPageProps) => {
   const page = await getDetailPage(params.alias);
 
   return (
