@@ -11,14 +11,7 @@ export interface ILinks {
 }
 
 export interface INearEarthObjects {
-  "2023-08-31": IAsteroid[]
-  "2023-09-06": IAsteroid[]
-  "2023-09-07": IAsteroid[]
-  "2023-09-04": IAsteroid[]
-  "2023-09-05": IAsteroid[]
-  "2023-09-02": IAsteroid[]
-  "2023-09-03": IAsteroid[]
-  "2023-09-01": IAsteroid[]
+  [key: string]: IAsteroid[]
 }
 
 export interface IAsteroid {
