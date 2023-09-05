@@ -50,7 +50,7 @@ const Card = ({ addProduct, description, mainTitle, className, hasBtn, ...props 
               `${item.estimated_diameter.feet.estimated_diameter_max.toFixed(0)} лунных орбит`}
               <div><ArrowIcon/></div>
             </div>
-            {item.estimated_diameter.kilometers.estimated_diameter_max > 1 ? <BigAsteroidIcon className={styles.icon}/> :
+            {item.estimated_diameter.kilometers.estimated_diameter_max > 0.5 ? <BigAsteroidIcon className={styles.icon}/> :
               <SmallAsteroidIcon className={styles.icon}/>}
             <div className={styles.name}>
               <Htag tag="h4"><span style={{ borderBottom: '1px solid white', color: 'white' }}>{item.name}</span></Htag>
