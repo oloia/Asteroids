@@ -9,7 +9,7 @@ const OrderList = async () => {
 
   return (
     <Card
-      mainTitle={`11 сент 2023`}
+      mainTitle={`12 сент 2023`}
       description={state}
     />
   );
